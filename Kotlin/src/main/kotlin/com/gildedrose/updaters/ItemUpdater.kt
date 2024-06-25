@@ -14,6 +14,7 @@ class ItemUpdater {
             ItemType.conjured -> ConjuredUpdater()
             ItemType.backstagePass -> BackstagePassUpdater()
             ItemType.agedBrie -> AgedBrieUpdater()
+            ItemType.legendary -> LegendaryUpdater()
             else -> NormalUpdater()
         }
     }

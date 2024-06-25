@@ -17,7 +17,7 @@ abstract class BaseUpdater {
     }
 
     private fun Item.checkQualityValid() {
-        this.quality.coerceIn(MIN_QUALITY, MAX_QUALITY)
+        this.quality = this.quality.coerceIn(MIN_QUALITY, MAX_QUALITY)
     }
 
 

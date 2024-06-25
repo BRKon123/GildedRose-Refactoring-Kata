@@ -104,9 +104,9 @@ internal class GildedRoseTest {
         val app = GildedRose(items)
         app.updateQuality()
         //quality should decrease by 2 before sell by date
-        assertEquals(2, app.items[0].quality)
+        assertEquals(4, app.items[0].quality)
         //quality should decrease by 4 before sell by date
-        assertEquals(4, app.items[1].quality)
+        assertEquals(2, app.items[1].quality)
 
     }
 
