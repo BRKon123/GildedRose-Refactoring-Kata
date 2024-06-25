@@ -39,7 +39,6 @@ internal class GildedRoseTest {
     fun qualityChangesCorrectlyForNormalItems() {
         val items = listOf(
             Item("Elixir of the Mongoose", 5, 7),
-            Item("Dexterity Vest", 6, 0),
             Item("Dexterity Vest", 0, 10),
         )
         val app = GildedRose(items)
@@ -47,7 +46,7 @@ internal class GildedRoseTest {
         //quality should be decremented by one
         assertEquals(6, app.items[0].quality)
         //quality decreases twice as fast for items past sellIn
-        assertEquals(8, app.items[2].quality)
+        assertEquals(8, app.items[1].quality)
     }
 
     @Test
@@ -97,6 +96,21 @@ internal class GildedRoseTest {
     }
 
     @Test
+    fun qualityChangesCorrectlyForConjuredItems() {
+        val items = listOf(
+            Item("Conjured Mana Cake", 3, 6),
+            Item("Conjured Mana Cake", -2, 6)
+        )
+        val app = GildedRose(items)
+        app.updateQuality()
+        //quality should decrease by 2 before sell by date
+        assertEquals(4, app.items[0].quality)
+        //quality should decrease by 4 before sell by date
+        assertEquals(2, app.items[1].quality)
+
+    }
+
+    @Test
     fun maxQualityIs50ForNonLegendaryItems() {
         val items = listOf(
             Item("Backstage passes to a TAFKAL80ETC concert", 15, 50),
@@ -117,11 +131,13 @@ internal class GildedRoseTest {
         val items = listOf(
             Item("+5 Dexterity Vest", 10, 0),
             Item("Elixir of the Mongoose", 5, 0),
+            Item("+5 Dexterity Vest", -5, 1),
         )
         val app = GildedRose(items)
         app.updateQuality()
         assertEquals(0, app.items[0].quality)
         assertEquals(0, app.items[1].quality)
+        assertEquals(0, app.items[2].quality)
 
     }
 
