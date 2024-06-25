@@ -1,8 +1,10 @@
 package com.gildedrose
 
+import com.gildedrose.updaters.ItemUpdater
+
 fun main(args: Array<String>) {
 
-    println("OMGHAI!")
+    val itemUpdater = ItemUpdater()
 
     val items = listOf(
         Item("+5 Dexterity Vest", 10, 20), //
@@ -17,20 +19,7 @@ fun main(args: Array<String>) {
             Item("Conjured Mana Cake", 3, 6)
     )
 
-    val app = GildedRose(items)
-
-    var days = 5
-    if (args.size > 0) {
-        days = Integer.parseInt(args[0]) + 1
-    }
-
-    for (i in 0..days - 1) {
-        println("-------- day $i --------")
-        println("name, sellIn, quality")
-        for (item in items) {
-            println(item)
-        }
-        println()
-        app.updateQuality()
-    }
+    println(items[8])
+    itemUpdater.update(items[8])
+    println(items[8])
 }
